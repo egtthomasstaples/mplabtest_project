@@ -6,7 +6,8 @@ pipeline{
                 docker
                 {
                     alwaysPull false
-                    image 'localhost:5000/ci-build/mplabx-5.25_xc16-1.36'
+                    reuseNode true
+                    image 'mplabx-5.25_xc16-1.36'
                 }  
             }
             steps {
