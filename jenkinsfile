@@ -6,7 +6,6 @@ pipeline{
                 docker
                 {
                     alwaysPull false
-                    reuseNode true
                     image 'mplabx-5.25_xc16-1.36'
                 }  
             }
