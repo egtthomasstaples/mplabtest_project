@@ -1,14 +1,14 @@
 pipeline{
-    agent none
+    agent 'Linux'
     stages{
-        stage ('Checkout from SCM')
+        stage('Checkout from SCM')
         {
             agent 
             {
                 docker {image 'mplabx-5.25_xc16-1.36:latest'}    
             }
         }
-        stage ('Ls stuff')
+        stage('Ls stuff')
         {
             agent
             {
