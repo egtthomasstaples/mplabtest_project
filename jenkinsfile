@@ -12,6 +12,8 @@ pipeline{
             }
             steps {
                 checkout scm
+                sh "cd Software/CLU-0024-SRC Blowfish-Firmware"
+                sh "ls"
                 sh "echo hello"
             }
         }
