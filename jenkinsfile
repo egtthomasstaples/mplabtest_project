@@ -14,7 +14,8 @@ pipeline{
                 checkout scm
                 sh "ls"
                 // Generate make files 
-                //sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ."
+                sh "cd mplab_second_project.x"
+                sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ."
                 // Clean output directory. 
                 sh "rm -f -r build/default"
                 sh "rm -f -r dist/default"
