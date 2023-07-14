@@ -21,9 +21,9 @@ pipeline{
                 sh "ls"
                 sh "rm -f -r build/default"
                 sh "rm -f -r dist/default"
-                sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make clean"
+                sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/clean"
                 // Build all targets
-                sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make --always-make all"
+                sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/ --always-make all"
                
                 sh "ls"
                 sh "echo hello"
