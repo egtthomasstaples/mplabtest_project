@@ -5,20 +5,11 @@ pipeline{
             agent {
                 docker
                 {
-                    image 'mplabx-5.25_xc16-1.36:latest'
-                    registryUrl 'localhost:5000/ci-build'
+                    image 'localhost:5000/ci-build/mplabx-5.25_xc16-1.36:latest'
                 }  
             }
             steps {
-                checkout scm
-            }
-        }
-        stage('Ls stuff') {
-            agent {
-                docker {image 'mplabx-5.25_xc16-1.36:latest'}
-            }
-            steps {
-                sh 'ls'
+                sh "echo hello"
             }
         }
     }
