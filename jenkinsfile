@@ -5,7 +5,7 @@ pipeline{
             agent {
                 docker
                 {
-                    image 'localhost:5000/ci-build/mplabx-5.25_xc16-1.36:latest'
+                    image 'localhost:5000/ci-build/mplabx-5.25_xc16-1.36'
                 }  
             }
             steps {
