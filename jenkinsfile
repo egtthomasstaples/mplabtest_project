@@ -1,5 +1,5 @@
 pipeline{
-    agent 'Linux'
+    agent none
     stages{
         stage('Checkout from SCM')
         {
