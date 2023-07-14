@@ -5,7 +5,8 @@ pipeline{
             agent {
                 docker
                 {
-                    image 'mplabx-5.25_xc16-1.36'
+                    image 'mplabx-5.25_xc16-1.36:latest'
+                    registryUrl 'localhost:5000/ci-build'
                 }  
             }
             steps {
