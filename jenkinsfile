@@ -12,13 +12,11 @@ pipeline{
             }
             steps {
                 checkout scm
-                sh "sudo -i"
                 sh "ls"
                 // Generate make files 
                 sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ./mplab_second_project.X"
                 // Clean output directory. 
-                sh "cd ./mplab_second_project.X"
-                sh "pwd"
+                sh "cd mplab_second_project.X/"
                 sh "ls"
                 sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/clean"
                 // Build all targets
