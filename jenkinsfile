@@ -19,9 +19,7 @@ pipeline{
                     ls
                     /opt/microchip/mplabx/v5.25/mplab_platform/bin/make clean
                     /opt/microchip/mplabx/v5.25/mplab_platform/bin/make --always-make all
-                    cd /dist/default/production
                     ls
-                    cd ../../../
                     cp dist/default/production/mplab_second_project.X.production.hex $WORKSPACE/test_release.hex
                 """
                 archiveArtifacts artifacts: 'test_release.hex'
