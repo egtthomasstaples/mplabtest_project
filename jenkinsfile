@@ -1,13 +1,23 @@
-podTemplate(
-    containers: [containerTemplate(name: "mplabx", image: 'mplabx-5.25_xc16-1.36:latest',ttyEnabled:true,alwayPullImage:false)]
-)
-
-node {
-    container('mplabx')
-    {
-        stage ("Checkout from git")
+pipeline{
+    agent none
+    stages{
+        stage ('Checkout from SCM')
         {
-            checkout scm 
+            agent 
+            {
+                docker {image 'mplabx-5.25_xc16-1.36:latest'}    
+            }
+        }
+        stage ('Ls stuff')
+        {
+            agent
+            {
+                docker {image 'mplabx-5.25_xc16-1.36:latest'}
+            }
+            steps
+            {
+                sh 'ls'
+            }
         }
     }
 }
