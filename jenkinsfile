@@ -3,7 +3,10 @@ pipeline{
     stages {
         stage('Checkout from SCM') {
             agent {
-                docker {image 'mplabx-5.25_xc16-1.36:latest'}    
+                docker
+                {
+                    image 'mplabx-5.25_xc16-1.36'
+                }  
             }
             steps {
                 checkout scm
