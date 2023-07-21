@@ -4,10 +4,11 @@ pipeline{
         stage('Power On Virtual Machine')
         {
             node('any')
+            steps
             {
                 sh
                 """
-                    doctl compute droplet-action poweron 363671951
+                    doctl compute droplet-action power-on 364671951
                 """
             }
         }
