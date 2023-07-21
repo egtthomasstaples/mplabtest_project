@@ -45,7 +45,7 @@ node {
         sh"""
         #!/bin/bash
         doctl compute droplet-action power-on 364671951
-        status_response="null"
+        status_response=null
         
         until [ $status_response == "active ]
         do 
