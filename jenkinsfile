@@ -6,8 +6,8 @@ pipeline{
             node('any')
             steps
             {
-                sh
-                """
+                sh"""
+                #!/bin/bash
                     doctl compute droplet-action power-on 364671951
                 """
             }
