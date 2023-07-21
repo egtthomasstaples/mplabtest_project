@@ -45,10 +45,13 @@ node {
         sh"""
         #!/bin/bash
         doctl compute droplet-action power-on 364671951
-        vmResponse='inactive'
-        echo ${vmResponse}
-
         """
+        def vmResponse = 'inactive'
+        while (vmResponse != 'active')
+        {
+            vmResponse = sh "doctl compute droplet get 364671951 --format "Status" | grep "active""
+        }
+        sh "ssh root@188.166.153.31 java -jar /root/bin/slave.jar"
 
     }
 }
