@@ -49,11 +49,16 @@ node {
         env.vmResponse = 'inactive'
         while (vmResponse != 'active')
         {
-            sh "doctl compute droplet get 364671951 --format 'Status' | grep active > vmResponse.txt"
-            sh "ls"
-            sh "cat vmResponse.txt"
-            sh "$env.vmResponse=cat vmResponse.txt"
-            echo "${vmResponse}"
+            sh"""
+                doctl compute droplet get 364671951 --format 'Status' | grep active > vmResponse.txt
+                $env.vmResponse=cat vmResponse.txt
+                echo ${env.vmResponse}
+            """
+            #sh "doctl compute droplet get 364671951 --format 'Status' | grep active > vmResponse.txt"
+            #sh "ls"
+            #sh "cat vmResponse.txt"
+            #sh "$env.vmResponse=cat vmResponse.txt"
+            #echo "${vmResponse}"
         }
         sh "ssh root@188.166.153.31 java -jar /root/bin/slave.jar"
     }
