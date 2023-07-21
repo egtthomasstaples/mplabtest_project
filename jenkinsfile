@@ -1,28 +1,24 @@
 pipeline{
-    agent('any')
+
+    agent(label: 'Linux')
+
     stages {
-        stage('Power On Virtual Machine')
+        stage('Power on VM')
+        node ('any')
         {
-            agent('any')
-            steps
-            {
-                sh"""
-                #!/bin/bash
-                    doctl compute droplet-action power-on 364671951
-                """
-                echo "success"
-            }
+            
         }
         stage('Checkout from SCM') {
-            agent {label 'Linux'}
+            node('Linux')
+            agent {
+                docker
+                {
+                    alwaysPull false
+                    reuseNode true
+                    image 'mplabx-5.25_xc16-1.36'
+                }  
+            }
             steps {
-                agent {
-                    docker{
-                        alwaysPull false
-                        reuseNode true
-                        image 'mplabx-5.25_xc16-1.36'
-                    }  
-                }
                 checkout scm
                 sh """
                 #!/bin/bash
