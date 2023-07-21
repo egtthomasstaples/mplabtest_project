@@ -1,15 +1,7 @@
 pipeline{
-
-    agent(label 'Linux')
-
+    agent {label 'Linux'}
     stages {
-        stage('Power on VM')
-        node ('any')
-        {
-            
-        }
         stage('Checkout from SCM') {
-            node('Linux')
             agent {
                 docker
                 {
