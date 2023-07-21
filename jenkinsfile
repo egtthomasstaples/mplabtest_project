@@ -44,7 +44,6 @@ node {
     stage("Power on VM"){
         sh"""
         #!/bin/bash
-        $HOME=/root
         doctl compute droplet-action power-on 364671951
         """
     }
