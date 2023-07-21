@@ -1,4 +1,7 @@
 pipeline{
+    sh """
+        doctl compute droplet-action power-on 364671951
+    """
     agent {label 'Linux'}
     stages {
         stage('Checkout from SCM') {
