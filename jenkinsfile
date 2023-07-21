@@ -1,13 +1,15 @@
 pipeline{
-
-
+    agent('any')
     stages {
-        stage('Power on VM')
-        node ('any')
+        stage('Power On Virtual Machine')
         {
-            sh """
-                doctl compute droplet-action power-on 364671951
-            """
+            node('any')
+            {
+                sh
+                """
+                    doctl compute droplet-action poweron 363671951
+                """
+            }
         }
         stage('Checkout from SCM') {
             node('Linux')
