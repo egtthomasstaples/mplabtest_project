@@ -42,12 +42,23 @@
 // }
 node {
     stage("Power on VM"){
-        echo "Do I run this"
+        sh"""
+        #!/bin/bash
+        doctl compute droplet-action power-on 364671951
+        """
     }
 }
 
 node('Linux'){
     stage("Do i run this"){
         echo "Do in get to here"
+    }
+}
+node{
+    stage('Power off VM'){
+        sh"""
+        #!/bin/bash
+        doctl compute droplet-action power-off 364671951
+        """
     }
 }
