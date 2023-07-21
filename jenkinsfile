@@ -44,6 +44,7 @@ node {
     stage("Power on VM"){
         sh"""
         #!/bin/bash
+        sudo snap set system homedirs=/var/lib/jenkins/workspace/Mplab_Project
         doctl compute droplet-action power-on 364671951
         """
     }
