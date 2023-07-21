@@ -46,11 +46,7 @@ node {
         #!/bin/bash
         doctl compute droplet-action power-on 364671951
         vmResponse='inactive'
-        until [ ${vmResponse} == "active ]
-        do 
-            vmResponse=doctl compute get 364671951 --format "Status" | grep "active"
-        done
-        ssh root@188.166.153.31 java -jar /root/bin/slave.jar
+        echo ${vmResponse}
 
         """
 
