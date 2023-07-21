@@ -1,42 +1,53 @@
-pipeline{
-    agent {label 'Linux'}
-    stages {
-        stage('Checkout from SCM') {
-            agent {
-                docker
-                {
-                    alwaysPull false
-                    reuseNode true
-                    image 'mplabx-5.25_xc16-1.36'
-                }  
-            }
-            steps {
-                checkout scm
-                sh """
-                #!/bin/bash
-                    /opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ./mplab_second_project.X
-                    cd mplab_second_project.X/
-                    ls
-                    /opt/microchip/mplabx/v5.25/mplab_platform/bin/make clean
-                    /opt/microchip/mplabx/v5.25/mplab_platform/bin/make --always-make all
-                    ls
-                    cp dist/default/production/mplab_second_project.X.production.hex $WORKSPACE/test_release.hex
-                """
-                archiveArtifacts artifacts: 'test_release.hex'
+// pipeline{
+//     agent {label 'Linux'}
+//     stages {
+//         stage('Checkout from SCM') {
+//             agent {
+//                 docker
+//                 {
+//                     alwaysPull false
+//                     reuseNode true
+//                     image 'mplabx-5.25_xc16-1.36'
+//                 }  
+//             }
+//             steps {
+//                 checkout scm
+//                 sh """
+//                 #!/bin/bash
+//                     /opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ./mplab_second_project.X
+//                     cd mplab_second_project.X/
+//                     ls
+//                     /opt/microchip/mplabx/v5.25/mplab_platform/bin/make clean
+//                     /opt/microchip/mplabx/v5.25/mplab_platform/bin/make --always-make all
+//                     ls
+//                     cp dist/default/production/mplab_second_project.X.production.hex $WORKSPACE/test_release.hex
+//                 """
+//                 archiveArtifacts artifacts: 'test_release.hex'
 
-                // sh "ls"
-                // // Generate make files 
-                // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ./mplab_second_project.X"
-                // // Clean output directory. 
-                // sh "cd mplab_second_project.X/"
-                // sh "ls"
-                // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/clean"
-                // // Build all targets
-                // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/ --always-make all"
+//                 // sh "ls"
+//                 // // Generate make files 
+//                 // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/prjMakefilesGenerator.sh -f ./mplab_second_project.X"
+//                 // // Clean output directory. 
+//                 // sh "cd mplab_second_project.X/"
+//                 // sh "ls"
+//                 // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/clean"
+//                 // // Build all targets
+//                 // sh "/opt/microchip/mplabx/v5.25/mplab_platform/bin/make ./mplab_second_project.X/ --always-make all"
 
-                // sh "ls"
-                // sh "echo hello"
-            }
-        }
+//                 // sh "ls"
+//                 // sh "echo hello"
+//             }
+//         }
+//     }
+// }
+node {
+    stage("Power on VM"){
+        echo "Do I run this"
+    }
+}
+
+node('Linux'){
+    stage("Do i run this"){
+        echo "Do in get to here"
     }
 }
