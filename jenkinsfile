@@ -50,6 +50,7 @@ node {
         while (vmResponse != 'active')
         {
             vmResponse = sh "doctl compute droplet get 364671951 --format 'Status' | grep active"
+            echo "vmresponse: $vmResponse"
         }
         sh "ssh root@188.166.153.31 java -jar /root/bin/slave.jar"
 
