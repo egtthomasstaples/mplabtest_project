@@ -50,8 +50,7 @@ node {
         while (vmResponse != 'active')
         {
             sh"""
-                doctl compute droplet get 364671951 --format 'Status' | grep active > vmResponse.txt
-                $env.vmResponse=cat vmResponse.txt
+                $env.vmResponse=doctl compute droplet get 364671951 --format 'Status' | grep active
                 echo ${env.vmResponse}
             """
             // #sh "doctl compute droplet get 364671951 --format 'Status' | grep active > vmResponse.txt"
