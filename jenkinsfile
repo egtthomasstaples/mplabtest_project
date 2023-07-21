@@ -45,8 +45,7 @@ node {
         sh"""
         #!/bin/bash
         doctl compute droplet-action power-on 364671951
-        status_response='inactive'
-        echo ${status_response}
+        vmResponse='inactive'
         // until [ ${status_response} == "active ]
         // do 
         //     status_response=doctl compute get 364671951 --format "Status" | grep "active"
