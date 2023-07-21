@@ -10,6 +10,7 @@ pipeline{
                 #!/bin/bash
                     doctl compute droplet-action power-on 364671951
                 """
+                echo "success"
             }
         }
         stage('Checkout from SCM') {
